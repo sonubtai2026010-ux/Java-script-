@@ -1,0 +1,260 @@
+Assignment 1: Your First JavaScript Script - File: assign1.html
+<!DOCTYPE html>
+<!-- Name: Student | Roll No: 2610320281 | Assignment 1 -->
+<html lang="en">
+<head><meta charset="UTF-8"><title>My First JavaScript</title></head>
+<body>
+<h1>My First JavaScript Script</h1>
+<p id="msg">This text will be changed by JavaScript.</p>
+<script>
+// Name: Student | Roll No: 2610320281 | Assignment 1
+console.log("Hello, JavaScript!");
+document.write("<p>Written using document.write()</p>");
+document.getElementById("msg").innerText = "Hello, I am Student Roll 2610320281. Changed by JavaScript.";
+</script>
+</body>
+</html>
+OUTPUT: Browser console: Hello, JavaScript! + Page text changed
+Assignment 2: Variables and Data Types - File: assign2.js
+// Name: Student | Roll No: 2610320281 | Assignment 2
+let name = "Harsh";
+let age = 20;
+let isStudent = true;
+let marks = null;
+let city;
+let big = 12345678901234567890n;
+let sym = Symbol("id");
+console.log("name:", name, "type:", typeof name);
+console.log("age:", age, "type:", typeof age);
+console.log("isStudent type:", typeof isStudent);
+console.log("marks:", marks, "type:", typeof marks);
+console.log("city:", city, "type:", typeof city);
+console.log("big type:", typeof big);
+console.log("sym type:", typeof sym);
+OUTPUT:
+name: Harsh type: string
+age: 20 type: number
+isStudent type: boolean
+marks: null type: object (bug in JS)
+city: undefined type: undefined
+Assignment 3: Arithmetic, Assignment and Increment Operators - File: assign3.js
+// Name: Student | Roll No: 2610320281 | Assignment 3
+let a = 15, b = 4;
+console.log("--- Arithmetic operators ---");
+console.log("a + b =", a + b); //19
+console.log("a - b =", a - b); //11
+console.log("a * b =", a * b); //60
+console.log("a / b =", a / b); //3.75
+console.log("a % b =", a % b); //3
+console.log("a ** b =", a ** b); //50625
+console.log("--- Assignment operators ---");
+let x = 10;
+x += 5; console.log("x += 5 ->", x); //15
+x -= 3; console.log("x -= 3 ->", x); //12
+x *= 2; console.log("x *= 2 ->", x); //24
+x /= 4; console.log("x /= 4 ->", x); //6
+x %= 4; console.log("x %= 4 ->", x); //2
+x **= 3; console.log("x **= 3 ->", x); //8
+console.log("--- Increment and decrement ---");
+let i = 5;
+console.log("i++ gives", i++, "and now i is", i); //5 then 6
+console.log("++i gives", ++i, "and now i is", i); //7
+console.log("i-- gives", i--, "and now i is", i); //7 then 6
+console.log("--i gives", --i, "and now i is", i); //5
+OUTPUT as in original file - 15 lines
+Assignment 4: Comparison Operators and Text - File: assign4.js
+// Assignment 4
+let s1 = "Hello", s2 = "hello";
+console.log("s1 == s2:", s1 == s2); //false case sensitive
+console.log("s1 != s2:", s1 != s2);
+console.log("10 == '10':", 10 == "10"); //true loose
+console.log("10 === '10':", 10 === "10"); //false strict
+console.log("10 != '10':", 10 != "10");
+console.log("10 !== '10':", 10 !== "10");
+let text = "JavaScript Programming";
+console.log("Length:", text.length);
+console.log("Upper:", text.toUpperCase());
+console.log("Lower:", text.toLowerCase());
+console.log("Includes Script:", text.includes("Script"));
+console.log("Replace:", text.replace("JavaScript","JS"));
+console.log("Slice 0-10:", text.slice(0,10));
+console.log("Concatenation:", s1 + " " + s2);
+Assignment 10: Functions and Return Values - File: assign10.js
+// Name: Student | Roll No: 2610320281 | Assignment 10
+function add(a, b) { return a + b; }
+function greet(name = "Student") { // default parameter
+ return "Hello, " + name + "!";
+}
+function isEven(n) { return n % 2 === 0; }
+function factorial(n) { // recursion
+ if (n <= 1) return 1;
+ return n * factorial(n - 1);
+}
+const square = (n) => n * n; // arrow function
+function minMax(arr) { // returns object
+ return { min: Math.min(...arr), max: Math.max(...arr) };
+}
+function noReturn() {
+ let x = 5; // no return
+}
+console.log("add(7, 5) :", add(7, 5));
+console.log("greet() :", greet());
+console.log("greet('Harsh') :", greet("Harsh"));
+console.log("isEven(10) :", isEven(10));
+console.log("isEven(7) :", isEven(7));
+console.log("factorial(5) :", factorial(5));
+console.log("square(9) :", square(9));
+console.log("minMax([4,9,1,7]) :", minMax([4, 9, 1, 7]));
+console.log("noReturn() :", noReturn());
+OUTPUT:
+add 12, greet Hello Student, factorial 120, square 81, min 1 max 9, undefined
+Assignment 11: Finding and Fixing Errors - File: assign11.js
+// Name: Student | Roll No: 2610320281 | Assignment 11
+// Each bug is shown, caught with try...catch, and then fixed.
+// Bug 1: misspelt variable name -> ReferenceError
+let total = 100;
+try { console.log(totl); } catch (e) { console.log("Bug 1:", e.name, "-", e.message); }
+console.log("Fix 1: total =", total);
+// Bug 2: reading a property of null -> TypeError
+try { let user = null; console.log(user.name); } catch (e) { console.log("Bug 2:", e.name); }
+let user = { name: "Harsh" }; console.log("Fix 2: user.name =", user.name);
+// Bug 3: changing a const -> TypeError
+const PI = 3.14;
+try { PI = 3.14159; } catch (e) { console.log("Bug 3:", e.name); }
+let pi = 3.14; pi = 3.14159; console.log("Fix 3: pi =", pi);
+// Bug 4: calling something that is not a function -> TypeError
+let n = 5; try { n(); } catch (e) { console.log("Bug 4:", e.name); }
+// Bug 5: invalid JSON text -> SyntaxError
+try { JSON.parse("{name: 'Harsh'}"); } catch (e) { console.log("Bug 5:", e.name); }
+console.log("Fix 5:", JSON.parse('{"name": "Harsh"}'));
+// Bug 6 (logic): = used instead of ===
+let marks = 40;
+if (marks = 90) { console.log("Bug 6: wrongly says marks are 90, marks is now", marks); }
+marks = 40;
+if (marks === 90) { console.log("never printed"); }
+else { console.log("Fix 6: marks is", marks, "so the test is false"); }
+// Bug 7 (logic): off-by-one error
+let s1 = 0; for (let i = 1; i < 5; i++) { s1 += i; }
+let s2 = 0; for (let i = 1; i <= 5; i++) { s2 += i; }
+console.log("Bug 7: sum 1..5 gave", s1, "| Fix 7: sum 1..5 gives", s2);
+// Bug 8 (logic): text added instead of numbers
+let x = "10", y = 5;
+console.log("Bug 8: '10' + 5 =", x + y, "| Fix 8: Number('10') + 5 =", Number(x) + y);
+OUTPUT 8 lines - Full error handling
+Assignment 12: Calculator Functions - File: assign12.js
+// Name: Student | Roll No: 2610320281 | Assignment 12
+function add(a, b) { return a + b; }
+function subtract(a, b) { return a - b; }
+function multiply(a, b) { return a * b; }
+function divide(a, b) {
+ if (b === 0) { return "Error: cannot divide by zero"; }
+ return a / b;
+}
+function modulus(a, b) { return a % b; }
+function power(a, b) { return a ** b; }
+// one function that chooses the operation
+function calculate(op, a, b) {
+ switch (op) {
+ case "+": return add(a, b);
+ case "-": return subtract(a, b);
+ case "*": return multiply(a, b);
+ case "/": return divide(a, b);
+ case "%": return modulus(a, b);
+ case "^": return power(a, b);
+ default: return "Error: invalid operator";
+ }
+}
+console.log("add(12, 8) =", add(12, 8)); //20
+console.log("subtract(12, 8) =", subtract(12, 8)); //4
+console.log("multiply(12, 8) =", multiply(12, 8)); //96
+console.log("divide(12, 8) =", divide(12, 8)); //1.5
+console.log("divide(12, 0) =", divide(12, 0)); //Error
+console.log("modulus(12, 8) =", modulus(12, 8)); //4
+console.log("power(2, 10) =", power(2, 10)); //1024
+console.log("calculate('+', 5, 3) =", calculate("+", 5, 3)); //8
+console.log("calculate('*', 5, 3) =", calculate("*", 5, 3)); //15
+console.log("calculate('^', 5, 3) =", calculate("^", 5, 3)); //125
+console.log("calculate('?', 5, 3) =", calculate("?", 5, 3)); //invalid
+Assignment 13-14-15: BMI Calculator Project (BIG ASSIGNMENTS) - File: assign13.html +
+style13.css + bmi14.js + assign15.js
+--- assign13.html + style13.css (Page Layout - 100+ lines CSS) ---
+<!DOCTYPE html>
+<!-- Assignment 13 -->
+<html><head><meta charset="UTF-8"><title>BMI</title>
+<link rel="stylesheet" href="style13.css"></head>
+<body>
+<div class="container">
+<h1>BMI Calculator</h1><p class="sub">Enter your height and weight</p>
+<div class="field"><label>Height (cm)</label><input type="number" id="height"></div>
+<div class="field"><label>Weight (kg)</label><input type="number" id="weight"></div>
+<button id="calcBtn">Calculate BMI</button>
+<div id="result" class="result">Your result will appear here</div>
+<table class="chart"><tr><th>BMI</th><th>Category</th></tr>
+<tr><td>Below 18.5</td><td>Underweight</td></tr>
+<tr><td>18.5-24.9</td><td>Normal</td></tr>
+<tr><td>25-29.9</td><td>Overweight</td></tr>
+<tr><td>30+</td><td>Obese</td></tr></table>
+</div></body></html>
+--- style13.css (Full 57 lines) ---
+* { box-sizing: border-box; }
+body { font-family: Arial; background: #eef3fb; margin:0; padding:20px; }
+.container { max-width:420px; margin:20px auto; background:white; padding:24px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.15); }
+h1 { text-align:center; color:#0b5ed7; }
+.field { display:flex; flex-direction:column; margin-bottom:14px; }
+input { padding:10px; border:1px solid #bbb; border-radius:6px; font-size:16px; }
+button { width:100%; padding:12px; background:#0b5ed7; color:white; border:none; border-radius:6px; cursor:pointer; }
+.result { margin-top:16px; padding:14px; text-align:center; font-weight:bold; border-radius:6px; background:#f1f3f5; }
+.under { background:#cff4fc; color:#055160; }
+.normal { background:#d1e7dd; color:#0f5132; }
+.over { background:#fff3cd; color:#664d03; }
+.obese { background:#f8d7da; color:#842029; }
+--- bmi14.js (Assignment 14 - 32 lines) ---
+function calculateBMI(weightKg, heightCm){
+ const heightM = heightCm / 100;
+ return weightKg / (heightM * heightM);
+}
+function getCategory(bmi){
+ if (bmi < 18.5) return "Underweight";
+ if (bmi < 25) return "Normal";
+ if (bmi < 30) return "Overweight";
+ return "Obese";
+}
+function getClassName(category){
+ const classes = { Underweight: "under", Normal: "normal", Overweight: "over", Obese: "obese" };
+ return classes[category];
+}
+function showBMI(){
+ const weight = Number(document.getElementById("weight").value);
+ const height = Number(document.getElementById("height").value);
+ const box = document.getElementById("result");
+ const bmi = Number(calculateBMI(weight, height).toFixed(1));
+ const category = getCategory(bmi);
+ box.innerText = "Your BMI is " + bmi + " (" + category + ")";
+ box.className = "result " + getClassName(category);
+}
+document.getElementById("calcBtn").addEventListener("click", showBMI);
+--- assign15.js (Testing - Assignment 15) ---
+function calculateBMI(w,h){ return w/((h/100)*(h/100)); }
+function getCategory(bmi){
+ if(bmi<18.5) return "Underweight";
+ if(bmi<25) return "Normal";
+ if(bmi<30) return "Overweight";
+ return "Obese";
+}
+// Normal test
+console.log("Normal: 70kg 175cm ->", calculateBMI(70,175).toFixed(1), getCategory(calculateBMI(70,175)));
+// Boundary tests 18.5, 24.9, 25, 30
+console.log("Boundary 18.5 ->", getCategory(18.5));
+console.log("Boundary 24.9 ->", getCategory(24.9));
+console.log("Boundary 25 ->", getCategory(25));
+console.log("Boundary 30 ->", getCategory(30));
+// Invalid tests
+console.log("Invalid height 0 ->", calculateBMI(70,0));
+console.log("Invalid weight -5 ->", calculateBMI(-5,170));
+BROWSER OUTPUT: Your BMI is 22.9 (Normal) - Green color box
+
+
+
+
+
+
